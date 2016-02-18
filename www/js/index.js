@@ -34,8 +34,7 @@ var arung4 = '';
 var arung5 = '';
 var arung6 = '';
 var arung7 = ''; 
-var arung111 = ''; 
-var arung112 = ''; 
+var arung111 = '';  
  
 
  var userHandler = {
@@ -46,8 +45,7 @@ var arung112 = '';
     useroriname : arung6,
     status      : arung2,
     appid       : arung7,
-    gcmid       : arung111,
-    mailid       : arung112
+    gcmid       : arung111 
     
 }
 
@@ -94,35 +92,22 @@ var app = {
         else { 
             //alert("Register called");
             pushNotification.register(this.successHandler,this.errorHandler,{"badge":"true","sound":"true","alert":"true","ecb":"app.onNotificationAPN"});
-        } 
-
-        get(success, failure);
-
-        var deviceInfo = cordova.require("cordova/plugin/DeviceInformation");
-        deviceInfo.get(function(result) {
-                console.log("result = " + result);
-                 alert("Device plugin ok = " + result);
-            }, function() {
-                console.log("error");
-                 alert("Device plugin error = " + result);
-            });
+        }  
 
     },
     // result contains any message sent from the plugin call
     successHandler: function(result) {
         //var mail =  window.GoogleAuth.getMailIds();
-        alert('Hi Mail :' + result);
-        userHandler.appid = result;
-        userHandler.mailid = result;
+         
+        userHandler.appid = result; 
 
-        $.jStorage.set("appid", userHandler.appid);
-        $.jStorage.set("mailid", userHandler.mailid);
+        $.jStorage.set("appid", userHandler.appid); 
         
         //alert('Callback Success! Result = '+result); 
        //alert('Connected to Server! ID:'+result);
     },
     errorHandler:function(error) {
-        //alert(error);
+        alert(error);
         //alert('Error connecting to Server!'+error);
 
     },
